@@ -190,10 +190,29 @@ nav.scrolled{box-shadow:0 4px 24px rgba(11,31,75,.1);}
 .hero-card{background:white;border-radius:var(--r-xl);padding:16px;box-shadow:var(--sh-xl);overflow:hidden;}
 .hero-card-img{width:100%;border-radius:var(--r-lg);overflow:hidden;}
 .hero-card-img img{width:100%;height:auto;display:block;border-radius:var(--r-lg);}
-.hero-stat-badge{position:absolute;bottom:-14px;left:20px;background:white;border-radius:var(--r-md);padding:12px 16px;box-shadow:var(--sh-lg);display:flex;align-items:center;gap:11px;z-index:2;}
-.stat-badge-icon{width:40px;height:40px;border-radius:9px;flex-shrink:0;background:linear-gradient(135deg,var(--green),#34D399);display:flex;align-items:center;justify-content:center;font-size:18px;}
-.stat-badge-icon+div strong{display:block;font-size:17px;font-weight:800;color:var(--navy);line-height:1;}
-.stat-badge-icon+div span{font-size:11px;color:var(--g400);}
+.hero-stat-badge{
+  position:absolute;bottom:-18px;left:16px;
+  background:white;border-radius:var(--r-lg);
+  padding:14px 18px;box-shadow:var(--sh-lg);
+  display:flex;align-items:center;gap:13px;z-index:2;
+  border:1.5px solid rgba(5,150,105,.15);
+  min-width:190px;
+}
+.stat-badge-icon{
+  width:44px;height:44px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(135deg,#059669,#34D399);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;box-shadow:0 4px 12px rgba(5,150,105,.3);
+}
+.stat-badge-text{display:flex;flex-direction:column;gap:1px;}
+.stat-badge-text strong{display:block;font-size:22px;font-weight:800;color:var(--navy);line-height:1;}
+.stat-badge-text span{font-size:11.5px;color:var(--g400);font-weight:500;white-space:nowrap;}
+.stat-badge-bar{
+  width:100%;height:4px;background:#E2E8F0;border-radius:4px;margin-top:6px;overflow:hidden;
+}
+.stat-badge-bar-fill{
+  height:100%;width:95%;background:linear-gradient(90deg,#059669,#34D399);border-radius:4px;
+}
 
 /* STATS BAR */
 .stats-bar{background:var(--navy);}
@@ -214,11 +233,22 @@ nav.scrolled{box-shadow:0 4px 24px rgba(11,31,75,.1);}
 .about-badge .lbl{font-size:12px;color:var(--g400);margin-top:4px;}
 .about-lead{font-size:16px;color:var(--g600);line-height:1.8;margin-bottom:28px;}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.why-card{display:flex;align-items:flex-start;gap:11px;padding:14px;background:white;border-radius:var(--r-md);border:1px solid var(--g200);transition:box-shadow .2s,border-color .2s;}
-.why-card:hover{box-shadow:var(--sh-md);border-color:#BFDBFE;}
-.why-ico{width:34px;height:34px;border-radius:8px;flex-shrink:0;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:16px;}
-.why-card strong{font-size:12.5px;font-weight:700;color:var(--navy);display:block;margin-bottom:2px;}
-.why-card span{font-size:11.5px;color:var(--g400);}
+.why-card{
+  display:flex;align-items:flex-start;gap:11px;padding:14px 16px;
+  background:linear-gradient(135deg,#1A56DB 0%,#1243B8 100%);
+  border-radius:var(--r-md);border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 4px 16px rgba(26,86,219,.25);
+  transition:transform .2s,box-shadow .2s;
+}
+.why-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,86,219,.4);}
+.why-ico{
+  width:36px;height:36px;border-radius:9px;flex-shrink:0;
+  background:rgba(255,255,255,.15);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+  border:1px solid rgba(255,255,255,.2);
+}
+.why-card strong{font-size:12.5px;font-weight:700;color:white;display:block;margin-bottom:2px;}
+.why-card span{font-size:11.5px;color:rgba(255,255,255,.65);}
 
 /* DESTINATIONS */
 #destinations{background:white;}
@@ -589,9 +619,10 @@ footer .logo-svg{filter:drop-shadow(0 2px 8px rgba(0,0,0,.35));}
       </div>
       <div class="hero-stat-badge">
         <div class="stat-badge-icon">✅</div>
-        <div>
+        <div class="stat-badge-text">
           <strong>95%</strong>
           <span>Visa Success Rate</span>
+          <div class="stat-badge-bar"><div class="stat-badge-bar-fill"></div></div>
         </div>
       </div>
     </div>
@@ -856,15 +887,16 @@ footer .logo-svg{filter:drop-shadow(0 2px 8px rgba(0,0,0,.35));}
         <h3>Book Free Counseling</h3>
         <p class="form-sub">Fill in your details and our team will contact you within 24 hours.</p>
         <div class="f-row">
-          <div class="f-group"><label>Full Name *</label><input type="text" placeholder="Your full name" autocomplete="name"></div>
-          <div class="f-group"><label>Phone Number *</label><input type="tel" placeholder="98XXXXXXXX" autocomplete="tel"></div>
+          <div class="f-group"><label for="f-name">Full Name *</label><input id="f-name" type="text" placeholder="Your full name" autocomplete="name"></div>
+          <div class="f-group"><label for="f-phone">Phone Number *</label><input id="f-phone" type="tel" placeholder="98XXXXXXXX" autocomplete="tel"></div>
         </div>
-        <div class="f-group"><label>Email Address</label><input type="email" placeholder="you@example.com" autocomplete="email"></div>
+        <div class="f-group"><label for="f-email">Email Address</label><input id="f-email" type="email" placeholder="you@example.com" autocomplete="email"></div>
         <div class="f-row">
-          <div class="f-group"><label>Destination *</label><select><option value="">Select destination</option><option>🇬🇧 United Kingdom</option><option>🇦🇺 Australia</option><option>🇳🇿 New Zealand</option><option>🇨🇦 Canada</option></select></div>
-          <div class="f-group"><label>Study Level</label><select><option value="">Select level</option><option>Undergraduate (Bachelor's)</option><option>Postgraduate (Master's)</option><option>PhD / Research</option><option>Diploma / Certificate</option></select></div>
+          <div class="f-group"><label for="f-dest">Destination *</label><select id="f-dest"><option value="">Select destination</option><option>🇬🇧 United Kingdom</option><option>🇦🇺 Australia</option><option>🇳🇿 New Zealand</option><option>🇨🇦 Canada</option></select></div>
+          <div class="f-group"><label for="f-level">Study Level</label><select id="f-level"><option value="">Select level</option><option>Undergraduate (Bachelor's)</option><option>Postgraduate (Master's)</option><option>PhD / Research</option><option>Diploma / Certificate</option></select></div>
         </div>
-        <div class="f-group"><label>Your Message (Optional)</label><textarea placeholder="Tell us about your goals or any questions..."></textarea></div>
+        <div class="f-group"><label for="f-msg">Your Message (Optional)</label><textarea id="f-msg" placeholder="Tell us about your goals or any questions..."></textarea></div>
+        <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FCA5A5;border-radius:8px;padding:10px 14px;font-size:13px;color:#DC2626;margin-bottom:12px;"></div>
         <button class="f-submit" id="submitBtn">📅 Book My Free Counseling Session →</button>
       </div>
     </div>
@@ -997,11 +1029,70 @@ const statsIO = new IntersectionObserver(entries => {
 }, {threshold: 0.4});
 const statsBar = document.querySelector('.stats-bar');
 if (statsBar) statsIO.observe(statsBar);
+/* ── EMAILJS FORM SUBMISSION ── */
+(function(){
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+  s.onload = function(){ emailjs.init('3fyEMXbNs5t7ppCnM'); console.log('EmailJS ready'); };
+  s.onerror = function(){ console.error('EmailJS SDK failed to load'); };
+  document.head.appendChild(s);
+})();
+
 document.getElementById('submitBtn').addEventListener('click', function(e) {
   e.preventDefault();
-  this.textContent = "✅ Request Sent! We'll contact you soon.";
-  this.style.background = 'linear-gradient(135deg, #059669, #34D399)';
-  this.disabled = true;
+  var btn    = this;
+  var name   = document.getElementById('f-name').value.trim();
+  var phone  = document.getElementById('f-phone').value.trim();
+  var email  = document.getElementById('f-email').value.trim();
+  var dest   = document.getElementById('f-dest').value;
+  var level  = document.getElementById('f-level').value;
+  var msg    = document.getElementById('f-msg').value.trim();
+  var errBox = document.getElementById('form-error');
+
+  errBox.style.display = 'none';
+  if (!name)  { errBox.textContent = '⚠️ Please enter your full name.';       errBox.style.display='block'; return; }
+  if (!phone) { errBox.textContent = '⚠️ Please enter your phone number.';    errBox.style.display='block'; return; }
+  if (!dest)  { errBox.textContent = '⚠️ Please select a study destination.'; errBox.style.display='block'; return; }
+
+  if (typeof emailjs === 'undefined') {
+    errBox.textContent = '❌ Email service not loaded. Please refresh the page and try again.';
+    errBox.style.display = 'block'; return;
+  }
+
+  btn.textContent = '⏳ Sending...';
+  btn.disabled = true;
+  btn.style.background = 'linear-gradient(135deg,#6B7280,#4B5563)';
+
+  var templateParams = {
+    from_name   : name,
+    phone       : phone,
+    email       : email || 'Not provided',
+    destination : dest,
+    study_level : level || 'Not specified',
+    message     : msg   || 'No message',
+    reply_to    : email || 'noreply@truepatheducation.com.np'
+  };
+
+  emailjs.send('service_zod9bbj', 'template_s1aj56q', templateParams)
+    .then(function(res) {
+      console.log('EmailJS SUCCESS', res.status, res.text);
+      btn.textContent = '✅ Request Sent! We\'ll contact you soon.';
+      btn.style.background = 'linear-gradient(135deg,#059669,#34D399)';
+      ['f-name','f-phone','f-email','f-msg'].forEach(function(id){ document.getElementById(id).value=''; });
+      document.getElementById('f-dest').selectedIndex  = 0;
+      document.getElementById('f-level').selectedIndex = 0;
+    }, function(error) {
+      console.error('EmailJS FAILED:', JSON.stringify(error));
+      btn.disabled = false;
+      btn.textContent = '📅 Book My Free Counseling Session →';
+      btn.style.background = '';
+      errBox.textContent = '❌ Error ' + (error.status||'unknown') + ': ' + (error.text||JSON.stringify(error));
+      errBox.style.display = 'block';
+      btn.style.background = '';
+      errBox.textContent = '❌ Failed to send. Please call us directly at +977 9767394290 or WhatsApp us.';
+      errBox.style.display = 'block';
+      console.error('EmailJS error:', error);
+    });
 });
 const stickyBar = document.querySelector('.sticky-cta-bar');
 const footer = document.querySelector('footer');
